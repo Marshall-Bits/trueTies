@@ -95,7 +95,7 @@ playersForm.addEventListener("submit", async (e) => {
 });
 
 async function fetchQuestions() {
-  const res = await fetch("http://localhost:5005/api/trueties");
+  const res = await fetch("https://bobady-server.vercel.app/api/trueties");
 
   if (!res.ok) throw new Error("Error de red");
   let allQuestions = await res.json();
