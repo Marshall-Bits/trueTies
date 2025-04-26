@@ -17,8 +17,11 @@ const nextBtn = document.getElementById("next-question");
 const questionsCountP = document.getElementById("questions-count");
 const restartBtn = document.getElementById("restart");
 const mainContainer = document.getElementById("main-container");
-// Cambiar el selector del botón de cerrar
 const closeBtn = document.getElementById("end-game");
+const ESSENTIAL_QUESTIONS = [
+  "680cbc93d0649b1e889b157c",
+  "680cbcb4d0649b1e889b157d",
+];
 
 addPlayerBtn.addEventListener("click", () => {
   const wrapper = document.createElement("div");
@@ -102,13 +105,16 @@ async function fetchQuestions() {
   if (!Array.isArray(allQuestions)) allQuestions = [];
   questions = allQuestions;
   const question1 = allQuestions.find(
-    (q) => q._id === "680cbc93d0649b1e889b157c"
+    (q) => q._id === ESSENTIAL_QUESTIONS[0]
   );
   const question2 = allQuestions.find(
-    (q) => q._id === "680cbcb4d0649b1e889b157d"
+    (q) => q._id === ESSENTIAL_QUESTIONS[1]
   );
 
+  shuffleArray(questions);
+
   if (question1 && question2) {
+    
     questions = questions.filter(
       (q) => q._id !== question1._id && q._id !== question2._id
     );
@@ -124,8 +130,8 @@ async function fetchQuestions() {
       questions.length
     );
     questions.splice(insertPos2, 0, question2);
+    
   }
-  shuffleArray(questions);
 }
 
 const alternatingBackgrounds = ["#2C4054", "#402C54"];
@@ -222,3 +228,10 @@ restartBtn.addEventListener("click", () => {
 });
 
 closeBtn.style.display = "none";
+
+function shuffleArray(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+}
