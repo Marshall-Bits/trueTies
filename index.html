@@ -1,0 +1,52 @@
+<!-- TrueTies - Juego de Preguntas -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TrueTies</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="main-header">
+    <button id="end-game" class="close-btn" title="Finalizar juego">⨉</button>
+    <h1>TrueTies</h1>
+</header>
+<div class="container" id="main-container">
+    <div id="setup">
+        <form id="players-form">
+            <label for="player-names">Participantes:</label>
+            <div id="players-list">
+                <div class="player-input">
+                    <input type="text" name="player" placeholder="Nombre" required />
+                    <button type="button" class="remove-player" title="Eliminar jugador" style="display:none">🗑️</button>
+                </div>
+                <div class="player-input">
+                    <input type="text" name="player" placeholder="Nombre" required />
+                    <button type="button" class="remove-player" title="Eliminar jugador" style="display:none">🗑️</button>
+                </div>
+            </div>
+            <div class="add-player-row">
+                <button type="button" id="add-player" class="add-player-btn" title="Añadir jugador">＋</button>
+            </div>
+            <button type="submit">Iniciar juego</button>
+        </form>
+    </div>
+    <div id="game" style="display:none;">
+        <div id="question-box">
+            <h3 id="player-turn"></h3>
+            <p id="question-text"></p>
+        </div>
+        <div class="actions">
+            <button id="next-question">Siguiente</button>
+        </div>
+    </div>
+    <div id="results" style="display:none;">
+        <h2>¡Juego finalizado!</h2>
+        <p id="questions-count"></p>
+        <button id="restart">Volver a jugar</button>
+    </div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
